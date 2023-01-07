@@ -28,7 +28,7 @@ def processing():
 with DAG("simple_pipe", default_args=default_args, schedule_interval="*/5 * * * *", catchup=False) as dag:
     t1 = PythonOperator(task_id="parsing", python_callable=parsing)
     t2 = PythonOperator(task_id="processing", python_callable=processing)
-    t3 = BashOperator(task_id="storing", bash_command=processing)
-    t4 = BashOperator(task_id="Archiving", bash_command="exit 0")
+    t3 = PythonOperator(task_id="storing", python_callable=processing)
+    t4 = BashOperator(task_id="archiving", bash_command="exit 0")
 
     t1 >> t2 >> t3 >> t4
