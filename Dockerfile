@@ -1,5 +1,5 @@
 FROM apache/airflow:2.3.3-python3.7
-
+USER root
 #LABEL version="1.0.0"
 RUN apt-get update
 RUN pip install --user pytest
