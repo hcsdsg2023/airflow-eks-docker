@@ -3,7 +3,7 @@ FROM apache/airflow:2.3.3-python3.7
 #LABEL version="1.0.0"
 
 RUN pip install --user pytest
-RUN pip install airflow[kubernetes]
+RUN pip install --user apache-airflow[kubernetes]
 
 COPY dags/ ${AIRFLOW_HOME}/dags
 COPY unittests.cfg ${AIRFLOW_HOME}/unittests.cfg
