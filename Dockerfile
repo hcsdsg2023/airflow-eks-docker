@@ -4,7 +4,7 @@ FROM apache/airflow:1.10.11-python3.7
 
 RUN pip install --user pytest
 RUN pip install airflow[kubernetes]
-
+RUN pip install --no-cache-dir mlflow dvc pandas scikit-learn bentoml
 
 COPY dags/ ${AIRFLOW_HOME}/dags
 COPY unittests.cfg ${AIRFLOW_HOME}/unittests.cfg
